@@ -52,21 +52,21 @@
                 <el-tooltip
                   class="item"
                   effect="light"
-                  content="北京反转极光科技有限公司-技术部-前端事业群"
+                  content="会长"
                   placement="top"
                 >
                   <li>
                     <el-icon>
                       <data-analysis />
                     </el-icon>
-                    北京反转极光科技有限公司-技术部-前端事业群
+                    会长
                   </li>
                 </el-tooltip>
                 <li>
                   <el-icon>
                     <video-camera />
                   </el-icon>
-                  中国·北京市·朝阳区
+                  嘉定校区
                 </li>
                 <el-tooltip
                   class="item"

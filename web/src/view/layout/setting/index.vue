@@ -64,7 +64,7 @@ const showSettingDrawer = () => {
 }
 const changeMode = (e) => {
   if (e === null) {
-    userStore.changeSideMode('dark')
+    userStore.changeSideMode('light')
     return
   }
   userStore.changeSideMode(e)
