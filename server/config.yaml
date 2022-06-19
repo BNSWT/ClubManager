@@ -1,109 +1,3 @@
-# github.com/flipped-aurora/gin-vue-admin/server Global Configuration
-
-# jwt configuration
-jwt:
-  signing-key: 'qmPlus'
-  expires-time: 604800
-  buffer-time: 86400
-  issuer: 'qmPlus'
-
-# zap logger configuration
-zap:
-  level: 'info'
-  prefix: '[github.com/flipped-aurora/gin-vue-admin/server]'
-  format: 'console'
-  director: 'log'
-  encode-level: 'LowercaseColorLevelEncoder'
-  stacktrace-key: 'stacktrace'
-  max-age: 30 # 默认日志留存默认以天为单位
-  show-line: true
-  log-in-console: true
-
-# redis configuration
-redis:
-  db: 0
-  addr: '127.0.0.1:6379'
-  password: ''
-
-# email configuration
-email:
-  to: 'xxx@qq.com'
-  port: 465
-  from: 'xxx@163.com'
-  host: 'smtp.163.com'
-  is-ssl: true
-  secret: 'xxx'
-  nickname: 'test'
-
-# system configuration
-system:
-  env: 'public'  # Change to "develop" to skip authentication for development mode
-  addr: 8888
-  db-type: 'mysql'
-  oss-type: 'local'    # 控制oss选择走本地还是 七牛等其他仓 自行增加其他oss仓可以在 server/utils/upload/upload.go 中 NewOss函数配置
-  use-redis: false     # 使用redis
-  use-multipoint: false
-  # IP限制次数 一个小时15000次
-  iplimit-count: 15000
-  #  IP限制一个小时
-  iplimit-time: 3600
-
-# captcha configuration
-captcha:
-  key-long: 6
-  img-width: 240
-  img-height: 80
-
-# mysql connect configuration
-# 未初始化之前请勿手动修改数据库信息！！！如果一定要手动初始化请看（https://gin-vue-admin.com/docs/first_master）
-mysql:
-  path: ''
-  port: ''
-  config: ''
-  db-name: ''
-  username: ''
-  password: ''
-  max-idle-conns: 10
-  max-open-conns: 100
-  log-mode: ""
-  log-zap: false
-
-# pgsql connect configuration
-# 未初始化之前请勿手动修改数据库信息！！！如果一定要手动初始化请看（https://gin-vue-admin.com/docs/first_master）
-pgsql:
-  path: ''
-  port: ''
-  config: ''
-  db-name: ''
-  username: ''
-  password: ''
-  max-idle-conns: 10
-  max-open-conns: 100
-  log-mode: ""
-  log-zap: false
-
-db-list:
-  - disabled: true # 是否启用
-    type: "" # 数据库的类型,目前支持mysql、pgsql
-    alias-name: "" # 数据库的名称,注意: alias-name 需要在db-list中唯一
-    path: ''
-    port: ''
-    config: ''
-    db-name: ''
-    username: ''
-    password: ''
-    max-idle-conns: 10
-    max-open-conns: 100
-    log-mode: ""
-    log-zap: false
-
-
-# local configuration
-local:
-  path: 'uploads/file' # 访问路径
-  store-path: 'uploads/file' # 存储路径
-
-# autocode configuration
 aliyun-oss:
   endpoint: yourEndpoint
   access-key-id: yourAccessKeyId
@@ -113,10 +7,10 @@ aliyun-oss:
   base-path: yourBasePath
 autocode:
   transfer-restart: true
-  root: /home/yuyangz/GolandProjects/ClubManager
+  root: /home/yuyangz/Documents/courses/DataBase/ClubManager
   server: /server
-  server-plug: /plugin/%s
   server-api: /api/v1/%s
+  server-plug: /plugin/%s
   server-initialize: /initialize
   server-model: /model/%s
   server-request: /model/%s/request/
@@ -188,12 +82,13 @@ hua-wei-obs:
   access-key: you-access-key
   secret-key: you-secret-key
 jwt:
-  signing-key: 6d22edda-2b4f-419c-8e94-db41b0ddbd70
+  signing-key: 2c21b16e-4e2c-4095-8a25-72836830d7d1
   expires-time: 604800
   buffer-time: 86400
   issuer: qmPlus
 local:
   path: uploads/file
+  store-path: "uploads/file"
 mysql:
   path: 127.0.0.1
   port: "3306"
@@ -256,10 +151,11 @@ timer:
     interval: 168h
 zap:
   level: info
-  format: console
   prefix: '[github.com/flipped-aurora/gin-vue-admin/server]'
+  format: console
   director: log
-  show-line: true
   encode-level: LowercaseColorLevelEncoder
   stacktrace-key: stacktrace
+  max-age: 0
+  show-line: true
   log-in-console: true

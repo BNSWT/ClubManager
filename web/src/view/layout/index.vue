@@ -4,13 +4,8 @@
       <el-row :class="[isShadowBg?'shadowBg':'']" @click="changeShadow()" />
       <el-aside class="main-cont main-left">
         <div class="tilte" :style="{background: backgroundColor}">
-<<<<<<< HEAD
-          <img alt class="logoimg" :src="$GIN_VUE_ADMIN.appLogo">
-          <div v-if="isSider" class="tit-text" :style="{color:textColor}">{{ $GIN_VUE_ADMIN.appName }}</div>
-=======
           <img alt class="logoimg" src="@/assets/part_logo.png">
           <h2 v-if="isSider" class="tit-text" :style="{color:textColor}">{{ $GIN_VUE_ADMIN.appName }}</h2>
->>>>>>> 34b3d94d (Finish user manager)
         </div>
         <Aside class="aside" />
       </el-aside>
