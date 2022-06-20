@@ -40,7 +40,13 @@
         <!--        <el-table-column align="left" label="是否置顶" prop="stickyOnTop" width="120">-->
         <!--          <template #default="scope">{{ formatBoolean(scope.row.stickyOnTop) }}</template>-->
         <!--        </el-table-column>-->
-        <el-table-column align="left" label="通知范围" prop="coverage" width="120" />
+        <el-table-column align="left" label="通知范围" prop="coverage" width="120">
+          <template #default="scope">
+            <el-tag
+            :type = "scope.row.coverage=='所有成员' ? 'danger' : (scope.row.coverage=='活动部' ?  'success' : (scope.row.coverage=='宣传部' ? 'warning' : ''))">{{ scope.row.coverage }}</el-tag
+            >
+          </template>
+        </el-table-column>
         <el-table-column align="left" label="">
           <template #default="scope">
             <el-button type="primary" link icon="edit" size="small" class="table-button" @click="updateNotificationFunc(scope.row)">变更</el-button>
