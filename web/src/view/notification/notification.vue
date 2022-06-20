@@ -29,6 +29,7 @@
         :row-class-name="tableRowClassName"
         row-key="ID"
         @selection-change="handleSelectionChange"
+        @row-click="openDetail"
       >
         <el-table-column type="selection" width="55" />
         <el-table-column align="left" label="日期" width="180">
@@ -40,14 +41,14 @@
         <!--        <el-table-column align="left" label="是否置顶" prop="stickyOnTop" width="120">-->
         <!--          <template #default="scope">{{ formatBoolean(scope.row.stickyOnTop) }}</template>-->
         <!--        </el-table-column>-->
-        <el-table-column align="left" label="通知范围" prop="coverage" width="120">
+        <el-table-column align="right" label="通知范围" prop="coverage" width="120">
           <template #default="scope">
             <el-tag
-            :type = "scope.row.coverage=='所有成员' ? 'danger' : (scope.row.coverage=='活动部' ?  'success' : (scope.row.coverage=='宣传部' ? 'warning' : ''))">{{ scope.row.coverage }}</el-tag
-            >
+              :type="scope.row.coverage=='所有成员' ? 'danger' : (scope.row.coverage=='活动部' ? 'success' : (scope.row.coverage=='宣传部' ? 'warning' : ''))"
+            >{{ scope.row.coverage }}</el-tag>
           </template>
         </el-table-column>
-        <el-table-column align="left" label="">
+        <el-table-column align="right" label="">
           <template #default="scope">
             <el-button type="primary" link icon="edit" size="small" class="table-button" @click="updateNotificationFunc(scope.row)">变更</el-button>
             <el-button type="primary" link icon="delete" size="small" @click="deleteRow(scope.row)">删除</el-button>
@@ -98,6 +99,40 @@
         </div>
       </template>
     </el-dialog>
+
+    <el-dialog v-model="detailVisible" :before-close="closeDetail" center>
+      <template #header="">
+        <div >
+          <el-row>
+            <el-col :span="20" justify="begin"><h4 >{{detailData.title}}</h4></el-col>
+            <el-col :span="2" justify="end">
+              <el-tag
+                  :type="detailData.coverage=='所有成员' ? 'danger' : (detailData.coverage=='活动部' ? 'success' : (sdetailData.coverage=='宣传部' ? 'warning' : ''))"
+              >{{ detailData.coverage }}
+              </el-tag>
+            </el-col>
+            <el-col v-if="detailData.stickyOnTop" :span="2" offset="20" justify="end">
+              <el-tag type="info"><el-icon><CollectionTag /></el-icon>top</el-tag>
+            </el-col>
+            <el-col v-if="!detailData.stickyOnTop" :span="2" offset="20" justify="end">
+              <el-tag type="info"><el-icon><Paperclip /></el-icon>normal</el-tag>
+            </el-col>
+          </el-row>
+        </div>
+      </template>
+      <el-row><span>{{detailData.content}}</span></el-row>
+      <el-row height="2px">
+        <div />
+      </el-row>
+      <el-row>
+        <el-button type="primary" link icon="download" size="small" class="table-button" >download</el-button>
+      </el-row>
+      <template #footer>
+        <div class="dialog-footer">
+          <el-button size="small" type="primary" @click="closeDetail">确 定</el-button>
+        </div>
+      </template>
+    </el-dialog>
   </div>
 </template>
 
@@ -143,6 +178,14 @@ const options = [
 
 // 自动化生成的字典（可能为空）以及字段
 const formData = ref({
+  title: '',
+  content: '',
+  attachment: '',
+  stickyOnTop: false,
+  coverage: '所有成员',
+})
+
+const detailData = ref({
   title: '',
   content: '',
   attachment: '',
@@ -307,6 +350,23 @@ const deleteNotificationFunc = async(row) => {
   }
 }
 
+const detailVisible = ref(false)
+
+const openDetail = (row, column, event) => {
+  detailVisible.value = true
+  detailData.value = {
+    title: row.title,
+    content: row.content,
+    attachment: row.attachment,
+    stickyOnTop: row.stickyOnTop,
+    coverage: '所有成员',
+  }
+}
+
+const closeDetail = () => {
+  detailVisible.value = false
+}
+
 // 弹窗控制标记
 const dialogFormVisible = ref(false)
 
@@ -352,6 +412,20 @@ const enterDialog = async() => {
 </script>
 
 <style>
+.el-link {
+  margin-right: 8px;
+}
+
+.line {
+  width: 100%;
+}
+
+.line div {
+  width: 100%;
+  height: 0;
+  border-top: 1px solid var(--el-border-color);
+}
+
 .el-table .top-row {
   background-color: rgb(244,244,244);
 }
