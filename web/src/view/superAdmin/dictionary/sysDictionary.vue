@@ -3,7 +3,7 @@
     <warning-bar
       title="获取字典且缓存方法已在前端utils/dictionary 已经封装完成 不必自己书写 使用方法查看文件内注释"
     />
-    <div class="gva-search-box">
+    <div class="arch-box">
       <el-form :inline="true" :model="searchInfo">
         <el-form-item label="字典名（中）">
           <el-input v-model="searchInfo.name" placeholder="搜索条件" />
