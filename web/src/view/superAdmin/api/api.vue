@@ -205,7 +205,10 @@ const onReset = () => {
 const onSubmit = () => {
   page.value = 1
   pageSize.value = 10
+  console.log("before get table")
   getTableData()
+  console.log("after get table")
+
 }
 
 // 分页
@@ -239,6 +242,7 @@ const getTableData = async() => {
     total.value = table.data.total
     page.value = table.data.page
     pageSize.value = table.data.pageSize
+    console.log(tableData.value)
   }
 }
 
