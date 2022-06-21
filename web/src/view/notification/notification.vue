@@ -1,19 +1,5 @@
 <template>
   <div>
-    <div class="gva-search-box">
-      <el-form :inline="true" :model="searchInfo" class="demo-form-inline">
-        <el-form-item label="">
-          <el-input v-model="searchInfo.title" placeholder="标题" />
-        </el-form-item>
-        <el-form-item label="">
-          <el-input v-model="searchInfo.content" placeholder="内容" />
-        </el-form-item>
-        <el-form-item>
-          <el-button size="small" type="primary" icon="search" @click="onSubmit">查询</el-button>
-          <el-button size="small" icon="refresh" @click="onReset">重置</el-button>
-        </el-form-item>
-      </el-form>
-    </div>
     <div class="gva-table-box">
       <div class="gva-btn-list">
         <el-button size="small" type="primary" icon="plus" @click="openDialog">新增</el-button>
@@ -91,7 +77,7 @@
           <form id="fromCont" method="post">
             <div class="fileUpload" @click="inputChange">
               选择附件
-              <input v-show="false" id="file" ref="FileInput" multiple="multiple" type="file" @change="choseFile">
+              <input class="narrow-input" v-show="false" id="file" ref="FileInput" multiple="multiple" type="file" @change="choseFile">
             </div>
           </form>
           <el-button :disabled="limitFileSize" type="primary" size="small" class="uploadBtn" @click="getFile">上传附件</el-button>
@@ -535,7 +521,7 @@ const getFile = () => {
   if (percentage.value === 100) {
     percentageFlage.value = false
   }
-  formData.value.attachmentPath = 'https://github.com/BNSWT/ClubManager/raw/main/server/fileDir//' + file.value.name
+  formData.value.attachmentPath = 'https://github.com/BNSWT/ClubManager/raw/main/server/fileDir/' + file.value.name
   sliceFile() // 上传切片
 }
 
@@ -593,19 +579,20 @@ const inputChange = () => {
 </script>
 
 <style>
-.fileUpload{
-    padding: 3px 10px;
-    font-size: 12px;
-    height: 20px;
-    line-height: 20px;
-    position: relative;
-    cursor: pointer;
-    color: #000;
-    border: 1px solid #c1c1c1;
-    border-radius: 4px;
-    overflow: hidden;
-    display: inline-block;
-    input{
+.fileUpload {
+  padding: 3px 10px;
+  font-size: 12px;
+  height: 20px;
+  line-height: 20px;
+  position: relative;
+  cursor: pointer;
+  color: #000;
+  border: 1px solid #c1c1c1;
+  border-radius: 4px;
+  overflow: hidden;
+  display: inline-block;
+}
+    narrow-input{
       position: absolute;
       font-size: 100px;
       right: 0;
@@ -613,7 +600,7 @@ const inputChange = () => {
       opacity: 0;
       cursor: pointer;
     }
-}
+
   .fileName{
   display: inline-block;
   vertical-align: top;
