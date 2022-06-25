@@ -189,6 +189,9 @@ const getDisplayData = () => {
       const index = displayData.value.findIndex((element) =>
         element.ID === parentID
       )
+      if (displayData.value[index].children === undefined) {
+        displayData.value[index].children = []
+      }
       const childLen = displayData.value[index].children.length
       displayData.value[index].children[childLen] = tableData.value[i]
     }

@@ -71,14 +71,14 @@
                 <el-tooltip
                   class="item"
                   effect="light"
-                  content="GoLang/JavaScript/Vue/Gorm"
+                  content="国赛二等奖"
                   placement="top"
                 >
                   <li>
                     <el-icon>
                       <medal />
                     </el-icon>
-                    GoLang/JavaScript/Vue/Gorm
+                    国赛二等奖
                   </li>
                 </el-tooltip>
               </ul>
@@ -175,7 +175,7 @@
         </el-form-item>
         <el-form-item label="验证码" label-width="120px">
           <div class="code-box">
-            <el-input v-model="phoneForm.code" autocomplete="off" placeholder="请自行设计短信服务，此处为模拟随便写" style="width:300px" />
+            <el-input v-model="phoneForm.code" autocomplete="off" placeholder="请输入验证码" style="width:300px" />
             <el-button size="small" type="primary" :disabled="time>0" @click="getCode">{{ time>0?`(${time}s)后重新获取`:'获取验证码' }}</el-button>
           </div>
         </el-form-item>
@@ -202,7 +202,7 @@
         </el-form-item>
         <el-form-item label="验证码" label-width="120px">
           <div class="code-box">
-            <el-input v-model="emailForm.code" placeholder="请自行设计邮件服务，此处为模拟随便写" autocomplete="off" style="width:300px" />
+            <el-input v-model="emailForm.code" placeholder="请输入验证码" autocomplete="off" style="width:300px" />
             <el-button size="small" type="primary" :disabled="emailTime>0" @click="getEmailCode">{{ emailTime>0?`(${emailTime}s)后重新获取`:'获取验证码' }}</el-button>
           </div>
         </el-form-item>
